@@ -1,0 +1,33 @@
+<nav class="navigation">
+  <ul class="nav-menu">
+    <div
+      #selectwindow
+      class="select-window"
+      (window:resize)="onResize()"
+      [ngStyle]="{ width: currentWidth, left: currentLeft }"
+    ></div>
+    <li
+      #listitem
+      *ngFor="let item of items; let idx = index"
+      class="nav-item"
+      [ngClass]="{ selected: item.selected }"
+      (click)="addSelected(item)"
+    >
+      <span class="item-text">{{ item.title }}</span>
+    </li>
+  </ul>
+</nav>
+
+<!-- <li #pane class="nav-item"><span>AAA</span></li>
+<li class="nav-item" (click)="addSelected($event)">
+  <span class="item-text">BBB</span>
+</li>
+<li class="nav-item" (click)="addSelected($event)">
+  <span class="item-text">CCC</span>
+</li>
+<li class="nav-item" (click)="addSelected($event)">
+  <span class="item-text">DDD</span>
+</li>
+<li class="nav-item" (click)="addSelected($event)">
+  <span class="item-text">EEE</span>
+</li> -->

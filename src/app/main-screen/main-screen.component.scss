@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+
+  @media (max-width: 640px) {
+    width: 100vw;
+    font-size: 1rem;
+  }
+}
+
+.navigation-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
