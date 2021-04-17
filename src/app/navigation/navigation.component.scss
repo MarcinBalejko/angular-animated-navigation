@@ -2,13 +2,13 @@ $pumpkin-color: rgb(221, 127, 50);
 $darksoluls-black: rgb(15, 15, 15);
 
 .navigation {
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90vw;
   margin: 20px auto auto auto;
   height: 50px;
+
   @media (max-width: 640px) {
     height: auto;
   }
