@@ -6,11 +6,14 @@ import {
   AfterViewInit,
   QueryList,
   ElementRef,
+  Inject,
+  HostListener,
 } from '@angular/core';
 import { ListItem } from '../models/ListItem';
 
 @Component({
   selector: 'app-navigation',
+  providers: [{ provide: Window, useValue: window }],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
@@ -22,7 +25,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   currentWidth: string;
   currentLeft: string;
 
-  constructor() {}
+  constructor(@Inject(Window) private window: Window) {}
 
   ngOnInit(): void {
     this.items = [
@@ -39,7 +42,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
       {
         title: 'stage 3',
         link: 'www.o2.pl',
-        selected: true,
+        selected: false,
       },
       {
         title: 'stage 4',
@@ -49,7 +52,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
       {
         title: 'stage 5',
         link: 'www.instagram.com',
-        selected: false,
+        selected: true,
       },
       {
         title: 'final stage',
@@ -82,7 +85,9 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     });
   }
 
+  @HostListener('window:resize', ['$event'])
   onResize() {
+    console.log('RESIZED');
     setTimeout(() => {
       this.listitem.forEach((el) => {
         if (el.nativeElement.classList.contains('selected')) {
