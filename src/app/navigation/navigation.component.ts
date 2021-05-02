@@ -7,6 +7,7 @@ import {
   QueryList,
   ElementRef,
   Inject,
+  Input,
   HostListener,
 } from '@angular/core';
 import { ListItem } from '../models/ListItem';
@@ -20,47 +21,14 @@ import { ListItem } from '../models/ListItem';
 export class NavigationComponent implements OnInit, AfterViewInit {
   @ViewChildren('listitem') listitem: QueryList<ElementRef>;
   @ViewChild('selectwindow') selectwindow: any;
-  items: ListItem[];
+  @Input() items: ListItem[];
   selectedOne: string;
   currentWidth: string;
   currentLeft: string;
 
   constructor(@Inject(Window) private window: Window) {}
 
-  ngOnInit(): void {
-    this.items = [
-      {
-        title: 'stage 1',
-        link: 'www.onet.pl',
-        selected: false,
-      },
-      {
-        title: 'stage 2',
-        link: 'www.interia.pl',
-        selected: false,
-      },
-      {
-        title: 'stage 3',
-        link: 'www.o2.pl',
-        selected: false,
-      },
-      {
-        title: 'stage 4',
-        link: 'www.youtube.com',
-        selected: false,
-      },
-      {
-        title: 'stage 5',
-        link: 'www.instagram.com',
-        selected: true,
-      },
-      {
-        title: 'final stage',
-        link: 'www.twitter.com',
-        selected: false,
-      },
-    ];
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     console.log(this.listitem);
